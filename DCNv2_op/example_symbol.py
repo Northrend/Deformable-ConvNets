@@ -1,4 +1,4 @@
-import mx
+import mxnet as mx
 
 """
 demo symbol of using modulated deformable convolution
@@ -62,3 +62,8 @@ def modulated_deformable_roi_pool(data, rois, spatial_scale, imfeat_dim=256, def
 
     modulated_deform_roi_pool = mx.sym.broadcast_mul(deform_roi_pool, roi_mask_sigmoid)
     return modulated_deform_roi_pool
+
+if __name__ == '__main__':
+    data = mx.sym.Variable(name='data')
+    modulated_deformable_conv = modulated_deformable_conv(data, 'dummy_dcn', 1, (1,1))
+    print 'Test pass'
